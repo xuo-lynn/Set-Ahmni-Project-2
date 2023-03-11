@@ -10,6 +10,7 @@ import java.util.Objects;
 @Table(name="publisher")
 public class Publisher {
     @Id
+    @Column(name = "publisher_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;

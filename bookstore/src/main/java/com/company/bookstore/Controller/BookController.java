@@ -23,7 +23,7 @@ public class BookController {
         return ResponseEntity.ok(newBook);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/books/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable("id") Integer id) {
         Optional<Book> bookOptional = bookRepo.findById(id);
         if (bookOptional.isPresent()) {
@@ -39,7 +39,7 @@ public class BookController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/books/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable("id") Integer id, Book book) {
         Optional<Book> bookOptional = bookRepo.findById(id);
         if (bookOptional.isPresent()) {
@@ -55,7 +55,7 @@ public class BookController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/books/{id}")
     public ResponseEntity<Book> deleteBook(@PathVariable("id") Integer id) {
         Optional<Book> bookOptional = bookRepo.findById(id);
         if (bookOptional.isPresent()) {

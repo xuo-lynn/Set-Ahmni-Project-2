@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 type Publisher {
     id: Int!
     name: String!
@@ -12,9 +13,30 @@ type Publisher {
 
 type Query {
     findPublisherById(id:Int): Publisher
+=======
+type Motorcycle {
+    id: String!
+    make: String!
+    model: String!
+    year: Int!
+}
+
+type Query {
+    motorcycles: [Motorcycle]!
+    findMotorcycleById(id:String): Motorcycle
+}
+
+type Mutation {
+    addMotorcycle(id:String make:String model:String year:Int): Motorcycle
+    updateMotorcycle(id:String make:String model:String year:Int): Motorcycle
+    deleteMotorcycleById(id:String!): Boolean
+>>>>>>> 4b657a502e45342252cfa51b25f7e9d3c681e8de
 }
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 4b657a502e45342252cfa51b25f7e9d3c681e8de
