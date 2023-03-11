@@ -1,6 +1,7 @@
-package com.company.bookstore.Repository;
+package com.company.bookstore.repository;
 
 import com.company.bookstore.Model.Publisher;
+import com.company.bookstore.Repository.PublisherRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,8 +32,7 @@ public class PublisherRepositoryTests {
     public void addPublisher() {
         //Arrange...
         Publisher publisher = new Publisher();
-        publisher.setFirstName("Joe");
-        publisher.setLastName("Smith");
+        publisher.setName("Joe Smith");
 
 
         //Act...
@@ -47,13 +47,11 @@ public class PublisherRepositoryTests {
     public void getPublisher() {
         //Arrange...
         Publisher publisher = new Publisher();
-        publisher.setFirstName("Joe");
-        publisher.setLastName("Smith");
+        publisher.setName("Joe Smith");
 
 
         Publisher publisher2 = new Publisher();
-        publisher2.setFirstName("Bob");
-        publisher2.setLastName("Marley");
+        publisher2.setName("Bob Marley");
 
         publisherRepo.save(publisher2);
         //Act...
@@ -65,20 +63,24 @@ public class PublisherRepositoryTests {
         assertEquals(publisher1.get(), publisher);
     }
     @Test
-    public void getPublishersByState() {
+    public void getPublishers() {
         //Arrange...
 
         //Act...
         Publisher publisher = new Publisher();
-        publisher.setFirstName("Joe");
-        publisher.setLastName("Smith");
-
+        publisher.setName("Joe Smith");
+        publisher.setState("KS");
+        publisher.setStreet("Meriden");
+        publisher.setCity("Topeka");
+        publisher.setPostalCode(66617);
 
         publisherRepo.save(publisher);
 
         Publisher publisher2 = new Publisher();
-        publisher2.setFirstName("Bob");
-        publisher2.setLastName("Marley");
+        publisher2.setName("Bob Marley");
+        publisher.setState("KS");
+        publisher.setStreet("Meriden");
+        publisher.setCity("Topeka");
 
         publisherRepo.save(publisher2);
 
@@ -92,13 +94,12 @@ public class PublisherRepositoryTests {
     public void updatePublisher() {
         //Arrange...
         Publisher publisher = new Publisher();
-        publisher.setFirstName("Joe");
-        publisher.setLastName("Smith");
+        publisher.setName("Joe Smith");
 
         publisherRepo.save(publisher);
 
         //Act...
-        publisher.setFirstName("UPDATED");
+        publisher.setName("UPDATED");
 
         publisherRepo.save(publisher);
 
@@ -112,8 +113,7 @@ public class PublisherRepositoryTests {
     public void deletePublisher() {
         //Arrange...
         Publisher publisher = new Publisher();
-        publisher.setFirstName("Joe");
-        publisher.setLastName("Smith");
+        publisher.setName("Joe Smith");
 
         publisherRepo.save(publisher);
 

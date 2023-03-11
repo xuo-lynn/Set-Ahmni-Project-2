@@ -12,21 +12,20 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String firstName;
-    private String lastName;
-    private String address1;
+    private String name;
+    private String street;
     private String city;
     private String state;
     private Integer postalCode;
-    private String country;
     private String email;
+    private String phone;
 
-    public String getAddress1() {
-        return address1;
+    public String getStreet() {
+        return street;
     }
 
-    public void setAddress1(String address1) {
-        this.address1 = address1;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getCity() {
@@ -53,13 +52,6 @@ public class Publisher {
         this.postalCode = postalCode;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public String getEmail() {
         return email;
@@ -77,20 +69,20 @@ public class Publisher {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
@@ -98,11 +90,11 @@ public class Publisher {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Publisher publisher = (Publisher) o;
-        return id.equals(publisher.id) && Objects.equals(firstName, publisher.firstName) && Objects.equals(lastName, publisher.lastName) && Objects.equals(address1, publisher.address1) && Objects.equals(city, publisher.city) && Objects.equals(state, publisher.state) && Objects.equals(postalCode, publisher.postalCode) && Objects.equals(country, publisher.country) && Objects.equals(email, publisher.email);
+        return id.equals(publisher.id) && Objects.equals(name, publisher.name) && Objects.equals(street, publisher.street) && Objects.equals(city, publisher.city) && Objects.equals(state, publisher.state) && Objects.equals(postalCode, publisher.postalCode) && Objects.equals(email, publisher.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, address1, city, state, postalCode, country, email);
+        return Objects.hash(id, name, street, city, state, postalCode, email);
     }
 }

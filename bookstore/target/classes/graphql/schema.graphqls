@@ -1,9 +1,9 @@
 
 type Publisher {
     id: Int!
-    name: String!
-    street: String!
-    phone: String!
+    firstName: String!
+    lastName: String!
+    address1: String!
     city: String!
     state: String!
     postalCode: Int!
@@ -11,6 +11,7 @@ type Publisher {
 }
 
 type Query {
+    publishers: [Publisher]!
     findPublisherById(id:Int): Publisher
 }
 

@@ -1,4 +1,4 @@
-package com.company.bookstore.Controller;
+package com.company.bookstore.controller;
 import com.company.bookstore.Model.Publisher;
 import com.company.bookstore.Repository.PublisherRepository;
 
@@ -42,8 +42,7 @@ public class PublisherControllerTests {
     @Test
     public void shouldReturnNewPublisherOnValidPostRequest() throws Exception {
         Publisher publisher = new Publisher();
-        publisher.setFirstName("Joe");
-        publisher.setLastName("Smith");
+        publisher.setName("Joe Smith");
 
         String inputJson = mapper.writeValueAsString(publisher);
         mockMvc.perform(MockMvcRequestBuilders
@@ -87,14 +86,12 @@ public class PublisherControllerTests {
     public void shouldReturnAllPublishers() throws Exception {
         Publisher publisher = new Publisher();
         publisher.setId(1);
-        publisher.setFirstName("Joe");
-        publisher.setLastName("Smith");
+        publisher.setName("Joe Smith");
 
         String inputJson = mapper.writeValueAsString(publisher);
 
         Publisher publisher2 = new Publisher();
-        publisher2.setFirstName("Bob");
-        publisher2.setLastName("Marley");
+        publisher2.setName("Bob Marley");
         publisher2 = publisherRepo.save(publisher2);
         //Act...
         publisher = publisherRepo.save(publisher);
