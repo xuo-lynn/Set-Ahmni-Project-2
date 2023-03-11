@@ -1,8 +1,12 @@
 package com.company.bookstore.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.security.PublicKey;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="author")
@@ -11,6 +15,11 @@ public class Author {
     @Column(name = "author_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonBackReference
+    @JoinColumn(name = "author_id")
+    private Set<Book> books = new HashSet<>();
 
     public Integer getAuthorId() {
         return id;
@@ -113,5 +122,4 @@ public class Author {
     private String phone;
     @Column(name = "email")
     private String email;
-
 }
