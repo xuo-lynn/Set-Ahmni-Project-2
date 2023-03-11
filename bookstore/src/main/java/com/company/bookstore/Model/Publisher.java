@@ -1,44 +1,33 @@
 package com.company.bookstore.Model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Table(name = "publisher")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name="publisher")
 public class Publisher {
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "publisher_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private String firstName;
+    private String lastName;
+    private String address1;
+    private String city;
+    private String state;
+    private Integer postalCode;
+    private String country;
+    private String email;
 
-    public String getName() {
-        return name;
+    public String getAddress1() {
+        return address1;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAddress1(String address1) {
+        this.address1 = address1;
     }
-
-    @Column(name = "name")
-    private String name;
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    @Column(name = "street")
-    private String street;
 
     public String getCity() {
         return city;
@@ -48,9 +37,6 @@ public class Publisher {
         this.city = city;
     }
 
-    @Column(name = "city")
-    private String city;
-
     public String getState() {
         return state;
     }
@@ -59,30 +45,21 @@ public class Publisher {
         this.state = state;
     }
 
-    @Column(name = "state")
-    private String state;
-
-    public String getPostalCode() {
+    public Integer getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(String postalCode) {
+    public void setPostalCode(Integer postalCode) {
         this.postalCode = postalCode;
     }
 
-    @Column(name = "postal_code")
-    private String postalCode;
-
-    public String getPhone() {
-        return phone;
+    public String getCountry() {
+        return country;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCountry(String country) {
+        this.country = country;
     }
-
-    @Column(name = "phone")
-    private String phone;
 
     public String getEmail() {
         return email;
@@ -92,20 +69,40 @@ public class Publisher {
         this.email = email;
     }
 
-    @Column(name = "email")
-    private String email;
-
-    public Publisher() {
+    public Integer getId() {
+        return id;
     }
 
-    public Publisher(String name, String street, String city, String state, String postalCode, String phone, String email) {
-        this.name = name;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.postalCode = postalCode;
-        this.phone = phone;
-        this.email = email;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Publisher publisher = (Publisher) o;
+        return id.equals(publisher.id) && Objects.equals(firstName, publisher.firstName) && Objects.equals(lastName, publisher.lastName) && Objects.equals(address1, publisher.address1) && Objects.equals(city, publisher.city) && Objects.equals(state, publisher.state) && Objects.equals(postalCode, publisher.postalCode) && Objects.equals(country, publisher.country) && Objects.equals(email, publisher.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, address1, city, state, postalCode, country, email);
+    }
 }
