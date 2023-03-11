@@ -22,7 +22,7 @@ public class AuthorController {
         return ResponseEntity.ok(newAuthor);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/author/{authorid}")
     public ResponseEntity<Author> getAuthorById(@PathVariable Integer id) {
         Optional<Author> author = authorRepo.findById(id);
         return author.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -34,7 +34,7 @@ public class AuthorController {
         return ResponseEntity.ok(authors);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/author/{authorid}")
     public ResponseEntity<Author> updateAuthor(@PathVariable Integer id, Author author) {
         Optional<Author> authorOptional = authorRepo.findById(id);
         if (authorOptional.isPresent()) {
@@ -54,7 +54,7 @@ public class AuthorController {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/author/{authorid}")
     public ResponseEntity<Author> deleteAuthor(@PathVariable("id") Integer id) {
         Optional<Author> bookOptional = authorRepo.findById(id);
         if (bookOptional.isPresent()) {
