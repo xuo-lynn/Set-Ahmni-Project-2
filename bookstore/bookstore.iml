@@ -119,5 +119,6 @@
     <orderEntry type="library" name="Maven: com.graphql-java:java-dataloader:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.antlr:antlr4-runtime:4.9.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.25" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.0" level="project" />
   </component>
 </module>
